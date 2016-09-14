@@ -17,6 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from rest_framework import routers
 from findlove import views
+from rest_framework.urlpatterns import format_suffix_patterns
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -24,6 +25,15 @@ router.register(r'groups', views.GroupViewSet)
     
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    #url(r'^', include(router.urls)),
+    #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+#     url(r'^snippets/$', views.SnippetList.as_view()),
+#     url(r'^snippets/(?P<pk>[0-9]+)/$', views.SnippetDetail.as_view()),
+    url(r'^candidates/$', views.CandidateList.as_view()),
+    url(r'^candidates/(?P<pk>[0-9]+)/$', views.CandidateDetail.as_view()),
+    url(r'^$',views.index,name='index'),
+    url(r'^index/$', views.index,name='index'),
+    url(r'^index/(?P<gender>[a-z]*)/$', views.index,name='index'),
+    
 ]
+urlpatterns = format_suffix_patterns(urlpatterns)
