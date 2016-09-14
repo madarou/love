@@ -43,6 +43,7 @@ class Candidate(BaseModel):
     description=models.CharField(max_length=255,null=True)#个人签名
     avatar=models.ImageField(upload_to='/img/avatar/',null=True)
     
+    
 class Snippet(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100, blank=True, default='')

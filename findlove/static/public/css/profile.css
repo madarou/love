@@ -1,0 +1,38 @@
+/*********************************************************************************** ABOUT */
+.o-team { display: inline-block; width: 100%; }
+.o-team .o-team-person.opacity50 { opacity: 0.5; }
+.o-team .o-team-person.opacity50.active { opacity: 1; }
+.o-team .o-team-person { width: 100%; margin: 5px 0px; position: relative; text-align: center; float: left; background: #FFF;
+padding: 20px 0px;}
+.o-team .o-team-person:hover { }
+.o-team .about-img { border-radius: 50%; float:left; width:80px; height:80px; overflow:hidden; margin: 0px 20px; }
+.o-team .about-img > img { height: 100%; max-width: inherit; }
+.about-sDetails { margin-right: 30px; text-align:left; }
+.o-team .about-openBtn { position: absolute; right: 10px; top: 48px; font-size: 10px; color: #aaa; font-weight: normal;
+background-color: #EAEAEA; width: 26px; border-radius: 50%; height: 26px; line-height: 27px; text-align: center;
+-moz-transition: all 0.5s; -webkit-transition: all 0.5s; -o-transition: all 0.5s; transition: all 0.5s; }
+.o-team .about-openBtn:hover { cursor:pointer; background-color: #C0C0C0; color:#fff; }
+.o-team .o-team-person h3 { font-size: 16px; color: #EA2424; margin: 10px 0px 5px 0px; }
+.o-team .o-team-person h4 { font-size: 13px; color: #aaa; margin: 5px 0px 5px 0px; }
+.o-team .o-team-person .a-scl-icons { font-size: 18px; color:#949494; margin-top: 0px; line-height: 1; margin-top:10px; }
+.o-team .o-team-person .a-scl-icons a { color:#949494; margin:0px 10px 0px 0px; }
+.o-team .o-team-person .a-scl-icons a:hover { color:#C0C0C0; }
+
+.o-team .o-team-person .h-line50 { border-bottom: 1px solid #dcdee0; margin: 10px 0px; width: 50%; position: relative; display: inline-block; }
+.o-team .o-team-person .o-person-content { display:none; width:100%; padding: 5px; }
+.o-person-content p { font-size: 12px; color:#949494; margin-top: 0px; line-height: 1; text-align: justify; }
+
+.o-person-details .a-skills { margin-bottom: 0px; border-bottom: 1px solid #DDD; padding-bottom: 10px; }
+
+.chart { position: relative; display: inline-block; width: 110px; height: 110px; margin-top: 20px; margin-bottom: 30px; text-align: center; }
+.chart h3 { font-size: 13px; color: #777 !important; margin: 10px 0px 5px 0px; position: absolute; top: 34px;
+text-align: center; width: 100%; text-transform: lowercase; font-size: 16px; margin: 10px 0px 5px 0px; }
+.chart canvas { position: absolute; top: 0; left: 0; }
+.o-team .o-team-person .a-skills { color:#777; margin-top: 20px; }
+.percent { display: inline-block; font-size: 20px; color: #EA2424; z-index: 2; line-height: 1; }
+.percent:after { content: '%'; margin-left: 0.1em; font-size: .8em; }
+.angular { margin-top: 100px; }
+.angular .chart { margin-top: 0; }
+
+.a-ratings {  }
+.a-ratings i { color: #EAB236; font-size: 20px; }

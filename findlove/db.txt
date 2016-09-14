@@ -1,0 +1,5 @@
+Candidate:
+字段						类型							注释							备注
+name					varchar(30)
+description				varchar(255)				个人签名
+avatar					varchar(100)				头像路径
