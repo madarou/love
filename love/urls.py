@@ -18,6 +18,7 @@ from django.contrib import admin
 from rest_framework import routers
 from findlove import views
 from rest_framework.urlpatterns import format_suffix_patterns
+from love import settings
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -34,6 +35,8 @@ urlpatterns = [
     url(r'^$',views.index,name='index'),
     url(r'^index/$', views.index,name='index'),
     url(r'^index/(?P<gender>[a-z]*)/$', views.index,name='index'),
+    url(r'^templates/(?P<path>.*)$','django.views.static.serve',
+        {'document_root':'love/findlove/templates', 'show_indexes': True}),
     
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

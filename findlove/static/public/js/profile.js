@@ -15,10 +15,10 @@
 				var template ='<div class="about-img">'+
 									'<img src="'+this.settings.avatar+'" />'+
 								'</div>'+
-								'<div class="about-sDetails">'+
+								'<a  style="text-decoration:initial" href="'+this.settings.href+'"><div class="about-sDetails">'+
 									'<h3>'+this.settings.name+'</h3>'+
 									'<h4>'+this.settings.job+'</h4>'+
-								'</div>'+
+								'</div></a>'+
 								'<div class="about-openBtn">'+
 									'<i class="fa fa-plus"></i>'+
 								'</div>'+
@@ -43,6 +43,10 @@
 					_that.profile.find(".o-person-content").slideDown(500);
 					//$("body.o-page").animate({ scrollTop: self.parent().offset().top -80 }, 600);
 				})
+			},
+			//为profile添加
+			detail:function(){
+				
 			}
 	}
 	
@@ -52,6 +56,7 @@
 			avatar:'/static/public/img/logo.jpg',
 			job:'工程师',
 			detail:'没有更多...',
+			href:'/templates/candidate.html',//点击后指向的页面地址
 			parent:'body'//父元素，以#xxx的id形式传入
 	}
 	var profile=function(options){
