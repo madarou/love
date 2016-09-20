@@ -74,11 +74,13 @@ pre
 }
 
 #page, .mm-page { height:100%; }
-#page nav { display: none; }
+#page nav { /* display: none;  */z-index:999}
 .mm-menu.mm-front { box-shadow:none !important; }
 body #header { width: 100%; background: url("../img/menu-bg.svg") no-repeat center bottom !important; 
-	background-size: 100% !important; height: 76px; position:fixed; z-index:3; 
+	background-size: 100% !important; /* height: 76px; */ position:fixed; z-index:3; 
 	-moz-transition: all 0.5s; -webkit-transition: all 0.5s; -o-transition: all 0.5s; transition: all 0.5s;}
+	.height_1{height:76px}
+	.height_0{height:76px}
 body.p-home #header { height: 83px; }
 
 /* body.p-home .header-content { position: absolute; bottom: 40px; width: 100%; text-align: center; height: 80px; } */

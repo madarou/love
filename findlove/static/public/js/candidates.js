@@ -7,6 +7,23 @@ $(function(){
 			$("body").removeClass("p-scrolling");
 		}
 	});
+	//菜单的下拉与收回
+	$('.menu-btn').on('click',function(){
+		$('.mm-menu').css('top','0%');
+		$('.mm-top').css('top','0%');
+		$('.mm-front').css('top','0%');
+		$('.mm-next').css('top','0%');
+		$('#header').css('display','none');
+		$('.bannerPane').css('display','none');
+	});
+	$('.menu-btn2').on('click',function(){
+		$('.mm-menu').css('top','-80%');
+		$('.mm-top').css('top','-80%');
+		$('.mm-front').css('top','-80%');
+		$('.mm-next').css('top','-80%');
+		$('#header').css('display','block');
+		$('.bannerPane').css('display','block');
+	});
 	//加载列表
 	$.profile({parent:'.o-team'});
 	$.profile({parent:'.o-team'});
