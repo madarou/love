@@ -6,7 +6,5 @@ $(function(){
 		else{
 			$("body").removeClass("p-scrolling");
 		}
-	});
-	//加载列表
-	$.profile({parent:'.o-team'});
+	})
 })

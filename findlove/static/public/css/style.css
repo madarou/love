@@ -313,7 +313,7 @@ background-size: 100% !important; }
 
 
 /*********************************************************************************** BLOG */
-article { margin:3px 0px; border-top:1px solid #eee; background:#fff; display: inline-block; width:100%; }
+article { /* margin:3px 0px; */ border-top:1px solid #eee; background:#fff; display: inline-block; width:100%; }
 article:first-child { border-top:0px; }
 article h2 { margin: 7px 4px 4px; font-size: 14px; }
 article h3 a, article h2 a { text-decoration:none !important; font-weight:bold; }
@@ -365,7 +365,7 @@ article .article-img-pane img { height:100%; max-width: inherit; }
 line-height: 30px; text-align: center; background-color: #AAA; display: inline-block; border-radius: 50%; }
 
 /*********************************************************************************** Gallery */
-
+#Gallery{margin-top:12px}
 div.gallery-row:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
 div.gallery-item.big-item { float: left; width: 100%; }
 div.gallery-item { float: left; width: 100%;  }
