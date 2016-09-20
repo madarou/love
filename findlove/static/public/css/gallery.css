@@ -1,0 +1,19 @@
+/*********************************************************************************** Gallery */
+div.gallery{margin-top:12px}
+div.gallery-row:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
+div.gallery-item.big-item { float: left; width: 100%; }
+div.gallery-item { float: left; width: 100%;  }
+.treeColumns div.gallery-item { float: left; width: 33.3333%; }
+div.gallery-item a { display: block; margin: 1px; border: 1px solid #fff; color: #FFF; } 
+div.gallery-item img { display: block; width: 100%; height: auto; }
+
+div.gallery-row .row .mobile-one, div.gallery-row .row .mobile-two { padding:0px; }
+
+div.gallery-row a { -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; }
+div.gallery-row a:hover {
+-webkit-transform: scale(0.95, 0.95);
+-moz-transform: scale(0.95, 0.95);
+-ms-transform: scale(0.95, 0.95);
+-o-transform: scale(0.95, 0.95);
+transform: scale(0.95, 0.95);
+}

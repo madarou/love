@@ -9,4 +9,7 @@ $(function(){
 	});
 	//加载列表
 	$.profile({parent:'.o-team'});
+	$.profile({parent:'.o-team'});
+	$.profile({parent:'.o-team'});
+	$.profile({parent:'.o-team'});
 })
