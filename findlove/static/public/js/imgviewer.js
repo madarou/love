@@ -2,7 +2,7 @@
 	$.fn.photoview=function(){
 		function  PhotoView (element,options){
 				this.elemnt=element
-				this.arr =this.elemnt.children('.mobile-two').find('.gallery-item');
+				this.arr =this.elemnt.find('.gallery-item');
 				this.bodyNode = $(document.body);
 				this.winW = $(window).width()
 				this.winH = $(window).height();												
@@ -72,20 +72,38 @@
 				}
 			 },
 			 eventShow:function(m){
-		 		m.arr.on("tap",function(e){
-		 			e.stopPropagation();
-		 			 m.index=$(this).index();	
-		 			 m.createdom(m);
-					 m.Edefault(false);								 		
-		 			 m.movephoto(m,m.index);
-		 			 m.mask.show();
-					 m.wrap.show();  						 			
-		 			 m.wrap.on("tap",function(){
-	 				          m.Edefault(true);	
-	 					 m.wrap.remove();
-	 					 m.mask.remove();
-		 			});							 		
-		 		});
+//		 		m.arr.on("tap",function(e){
+//		 			e.stopPropagation();
+//		 			 m.index=$(this).index();	
+//		 			 console.log($(this));
+//		 			 console.log($(this).index());
+//		 			 m.createdom(m);
+//					 m.Edefault(false);								 		
+//		 			 m.movephoto(m,m.index);
+//		 			 m.mask.show();
+//					 m.wrap.show();  						 			
+//		 			 m.wrap.on("tap",function(){
+//	 				          m.Edefault(true);	
+//	 					 m.wrap.remove();
+//	 					 m.mask.remove();
+//		 			});							 		
+//		 		});
+		 		$.each(m.arr,function(index,item){
+		 			$(item).on("tap",function(e){
+			 			e.stopPropagation();
+			 			 m.index=index;	
+			 			 m.createdom(m);
+						 m.Edefault(false);								 		
+			 			 m.movephoto(m,m.index);
+			 			 m.mask.show();
+						 m.wrap.show();  						 			
+			 			 m.wrap.on("tap",function(){
+		 				          m.Edefault(true);	
+		 					 m.wrap.remove();
+		 					 m.mask.remove();
+			 			});							 		
+			 		});
+		 		})
 			 },
 			 movephoto:function(m,index){
 			 	if(index >m.getDates(m).arrImg.length-1){
