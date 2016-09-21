@@ -24,13 +24,13 @@
 				var firsthalf = Math.ceil(this.settings.number/2);
 				var items = "";
 				for(var i=0;i<firsthalf;i++){
-					items += '<div class="gallery-item"><a class="ui-link" rel="external"><img src="'+this.settings.imgs[i]+'"></a></div>';
+					items += '<div class="gallery-item"><a rel="external"><img src="'+this.settings.imgs[i]+'"></a></div>';
 				}
 				col1.html(items);
 				var col2 = $('<div>').addClass('mobile-two');
 				items = "";
 				for(var j=firsthalf;j<this.settings.number;j++){
-					items += '<div class="gallery-item"><a class="ui-link" rel="external"><img src="'+this.settings.imgs[j]+'"></a></div>';
+					items += '<div class="gallery-item"><a rel="external"><img src="'+this.settings.imgs[j]+'"></a></div>';
 				}
 				col2.html(items);
 				col1.appendTo(container);

@@ -2,7 +2,7 @@
 	$.fn.photoview=function(){
 		function  PhotoView (element,options){
 				this.elemnt=element
-				this.arr =this.elemnt.children();
+				this.arr =this.elemnt.children('.mobile-two').find('.gallery-item');
 				this.bodyNode = $(document.body);
 				this.winW = $(window).width()
 				this.winH = $(window).height();												
