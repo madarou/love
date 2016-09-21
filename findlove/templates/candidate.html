@@ -9,24 +9,30 @@
 		<link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
 		<link type="text/css" rel="stylesheet" href="/static/public/css/style.css" />
 		<link type="text/css" rel="stylesheet" href="/static/public/css/gallery.css" />
-
-		<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-		<link rel="apple-touch-startup-image" href="img/apple-touch-startup-image.png">
+		 <link rel="stylesheet" href="/static/public/css/jquery.mmenu.all.css" />
+		 <link rel="stylesheet" href="/static/public/css/foundation.css" />
+		  <link rel="stylesheet" href="/static/public/css/imgviewer.css" />
 
 	</head>
 	<body class="o-page p-product-single">
 		<div id="page">
 			<div id="header">
 				<div class="header-content">
-					<a href="index.html" class="p-link-home"><i class="fa fa-home"></i></a>
+					<a href="index.html" class="p-link-home" style="right: 20px;"><i class="fa fa-home"></i></a>
 					<a class="menu-btn" href="#menu"></a>
 					<a href="javascript:history.back();" class="p-link-back"><i class="fa fa-arrow-left"></i></a>
 				</div>
 			</div>
+			<div class="bannerPane" style="height:200px">
+				<div class="overlay"></div>
+				<div class="s-banner-content">
+					ÕÅÈ«µ°
+				</div>
+			</div>
+			
 			<div id="content">
 				
 				<article>
-					<img src="/static/public/img/2.jpg" />
 					
 					<div class="prod-single-content-h">
 						<div class="prod-pricePane">
@@ -69,72 +75,46 @@
 						
 					</div>
 					
+					
 				
-
+					<!-- <div id="test" class="gallery-row clearfix">
+								<div class="gallery-item">
+									
+										<img src="/static/public/img/1-th.jpg" width="100%" />
+									
+								</div>
+								<div class="gallery-item">
+									
+										<img src="/static/public/img/2-th.jpg" width="100%"/>
+									
+								</div>	
+								<div class="gallery-item">
+									
+										<img src="/static/public/img/3-th.jpg" width="100%" />
+									
+								</div>
+							</div> -->
+				
 			</div>
+			
+			<div class="photoview clearfix">
+						  <div><img src="http://www.xipwang.cn/photoview/imgs/1.jpg" width="100%"></div>
+						  <div><img src="http://www.xipwang.cn/photoview/imgs/2.jpg" width="100%"></div>
+						  <div><img src="http://www.xipwang.cn/photoview/imgs/3.jpg" width="100%"></div>
+						  <div><img src="http://www.xipwang.cn/photoview/imgs/4.jpg" width="100%"></div>
+						  <div><img src="http://www.xipwang.cn/photoview/imgs/5.jpg" width="100%"></div>
+						  <div><img src="http://www.xipwang.cn/photoview/imgs/6.jpg" width="100%"></div>
+						  <div><img src="http://www.xipwang.cn/photoview/imgs/7.jpg" width="100%"></div>
+					</div>
+					
 			<div class="subFooter">Copyright 2013. All rights reserved.</div>
-			
-			<!-- Menu navigation -->
-			<nav id="menu">
-				<ul>
-					<li>
-						<a href="index.html">
-							<i class="fa fa-home"></i>Home
-						</a>
-					</li>
-					<li>
-						<a href="about.html">
-							<i class="fa fa-users"></i>About
-						</a>
-					</li>
-					<li>
-						<a href="blog.html">
-							<i class="fa fa-pencil-square-o"></i>Blog
-						</a>
-						<ul>
-							<li><a href="blog-single-post.html"><i class="fa fa-pencil-square-o"></i>First Post</a></li>
-							<li>
-								<a href="blog-single-post.html"><i class="fa fa-pencil-square-o"></i>Second Post</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="gallery.html">
-							<i class="fa fa-picture-o"></i>Gallery
-						</a>
-						<ul>
-							<li><a href="gallery.html#PGalleryTwoC"><i class="fa fa-picture-o"></i>Photo 2 Columns</a></li>
-							<li><a href="gallery.html#PGalleryThreeC"><i class="fa fa-picture-o"></i>Photo 3 Columns</a></li>
-							<li><a href="gallery.html#PGalleryFourC"><i class="fa fa-picture-o"></i>Photo 4 Columns</a></li>
-							<li><a href="gallery.html#VideoGallery"><i class="fa fa-youtube-play"></i>Video Gallery</a></li>
-						</ul>
-					</li>
-					<li class="Selected">
-						<a href="products.html">
-							<i class="fa fa-th-list"></i>Products
-						</a>
-						<ul>
-							<li class="Selected"><a href="product-single.html"><i class="fa fa-th-list"></i>First product</a></li>
-							<li><a href="product-single.html"><i class="fa fa-th-list"></i>Second product</a></li>
-							<li><a href="product-single.html"><i class="fa fa-th-list"></i>Third product</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="shortcodes.html">
-							<i class="fa fa-list-alt"></i>Shortcodes
-						</a>
-					</li>
-					<li>
-						<a href="contact.html">
-							<i class="fa fa-envelope"></i>Contact
-						</a>
-					</li>
-				</ul>
-			</nav>
-			
 		</div>
-		<script src="/static/public/js/zepto.min.js"></script>
-		<script src="/static/public/js/gallery.js"></script>
+		<script src="http://www.xipwang.cn/js/zepto.min.js"></script>
+		<script src="/static/public/js/gallery.js"></script>    
     	<script src="/static/public/js/candidate.js"></script>
+    	<script src="/static/public/js/imgviewer.js"></script>
+    	<script>
+    		$(".photoview").photoview(); 
+    	</script>
 	</body>
 </html>

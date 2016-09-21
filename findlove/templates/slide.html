@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>移动端相册预览</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<script type="text/javascript" src="http://www.xipwang.cn/js/zepto.min.js"></script>
+</head>
+<body>
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	background: #eee
+}
+ul, li {
+	margin: 0;
+	padding: 0;
+}
+ul {
+	list-style: none;
+}
+.photoview {
+	width: 85%;
+}
+.photoview div {
+	float: left;
+	width: 30%;
+	height: 60.5px;
+	overflow: hidden;
+	margin: 5px 0 0 5px
+}
+.clearfix:after {
+	content: " ";
+	display: block;
+	clear: both;
+	height: 0;
+}
+.clearfix {
+	zoom: 1;
+}
+.mask-v-box {
+	background: #000;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0.9;
+	width: 100%;
+	height: 100%;
+	z-index: 100
+}
+.wrapView-v {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+}
+.wrapView-v .list-photo {
+	position: absolute;
+	z-index: 110;
+	-webkit-transition: all .3s ease-out;
+}
+.wrapView-v .list-photo li {
+	float: left;
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+}
+.wrapView-v .page-view {
+	display: block;
+	position: absolute;
+	z-index: 111;
+	width: 45px;
+	height: 45px;
+	right: 10px;
+	top: 10px;
+	line-height: 45px;
+	text-align: center;
+	font-size: 16px;
+	color: #fff
+}
+
+</style>
+<div class="photoview clearfix">
+	  <div><img src="http://www.xipwang.cn/photoview/imgs/1.jpg" width="100%"></div>
+	  <div><img src="http://www.xipwang.cn/photoview/imgs/2.jpg" width="100%"></div>
+	  <div><img src="http://www.xipwang.cn/photoview/imgs/3.jpg" width="100%"></div>
+	  <div><img src="http://www.xipwang.cn/photoview/imgs/4.jpg" width="100%"></div>
+	  <div><img src="http://www.xipwang.cn/photoview/imgs/5.jpg" width="100%"></div>
+	  <div><img src="http://www.xipwang.cn/photoview/imgs/6.jpg" width="100%"></div>
+	  <div><img src="http://www.xipwang.cn/photoview/imgs/7.jpg" width="100%"></div>
+</div>
+<script>
+
+$(".photoview>div").each(function(){
+		$(this).height($(this).width());
+});	     	  
+;(function($,wd,dc){
+	$.fn.photoview=function(){
+		function  PhotoView (element,options){
+				this.elemnt=element
+				this.arr =this.elemnt.children();
+				this.bodyNode = $(document.body);
+				this.winW = $(window).width()
+				this.winH = $(window).height();												
+				this.init();
+		};
+
+		PhotoView.prototype = {
+			init:function(){
+			     var m = this;
+			     m.index = 0;
+			     m.scale = m.winW/m.winH
+			     m.mask  = $('<div class="mask-v-box">');
+			     m.wrap  = $('<div class="wrapView-v">');	
+			     m.ulbox = $('<ul class="list-photo">');
+			     m.pageindex = $('<span class="page-view">×');											
+				 m.eventShow(m);
+				 m.slideEvent(m);
+			},	
+			getDates:function(m){	
+				var	arrurl=[];
+				var arrImg=[];
+				m.arr.each(function(i,v){ 
+					var url=$(this).find('img').attr('src');
+					arrurl.push(url);
+					arrImg.push(new Image());
+				});
+				return{
+					arrurl:arrurl,
+					arrImg:arrImg
+				};
+			},
+			createdom:function(m){  
+				var  img =m.getDates(m).arrImg;
+				var  url =m.getDates(m).arrurl;								
+				m.bodyNode.append(m.mask).append(m.wrap);								
+				m.wrap.append(m.ulbox).append( m.pageindex);
+				for(var i=0; i<img.length;i++){			
+						img[i].src=url[i];									
+						if(img[i].width/img[i].height > m.scale){ 
+							m.ulbox.append('<li>'+'<img src='+url[i]+' width="100%">'+'</li>');					
+						}else{
+							m.ulbox.append('<li>'+'<img src='+url[i]+' height="100%">'+'</li>');
+						};
+						m.ulbox.width(m.winW*img.length).height(m.winH);						
+						m.ulbox.children().width(m.winW).height(m.winH);		
+				   };
+				m.mask.hide();
+				m.wrap.hide();   
+			 },
+			 slideEvent:function(m){
+		 		m.ulbox.swipeLeft(function(e){ 
+		 			m.index++;
+		 			e.preventDefault();		 			
+		 			m.movephoto(m,m.index);
+		 		});
+		 		m.ulbox.swipeRight(function(e){
+		 			m.index--;
+		 			e.preventDefault();
+		 			m.movephoto(m,m.index);
+		 		});
+			 },
+			 Edefault:function(bool){
+				document.ontouchstart=function(){
+					return bool;
+				}
+			 },
+			 eventShow:function(m){
+		 		m.arr.on("tap",function(e){
+		 			e.stopPropagation();
+		 			 m.index=$(this).index();	
+		 			 m.createdom(m);
+					 m.Edefault(false);								 		
+		 			 m.movephoto(m,m.index);
+		 			 m.mask.show();
+					 m.wrap.show();  						 			
+		 			 m.wrap.on("tap",function(){
+	 				          m.Edefault(true);	
+	 					 m.wrap.remove();
+	 					 m.mask.remove();
+		 			});							 		
+		 		});
+			 },
+			 movephoto:function(m,index){
+			 	if(index >m.getDates(m).arrImg.length-1){
+		 			index =m.index= m.getDates(m).arrImg.length-1;
+		 		  }
+		 		if(index  <0){
+		 			index =m.index =0;
+		 		};
+		 		  m.pageindex.text(index+1+'/'+m.arr.length)
+			 	  m.ulbox.css("-webkit-transform","translateX(-"+index* m.winW+"px)"); 
+			 },
+	  	};
+		return this.each(function(){
+				new  PhotoView($(this));
+		});
+  };
+})(Zepto,window,document);
+
+$(".photoview").photoview()     //在此处调用 目前没有任何参数  只是做了简单预览效果 
+</script>
+</body>
+</html>
