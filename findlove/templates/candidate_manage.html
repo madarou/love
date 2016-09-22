@@ -1,0 +1,23 @@
+{% load rest_framework %}
+
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<style type="text/css">
+	#candidate{width:80%;}
+</style>
+</head>
+<body>
+
+<h1>candidate - {{ candidate.name }}</h1>
+<div id="candidate">
+	<form action="{% url 'manage' pk=candidate.pk %}" method="POST" enctype="multipart/form-data">
+	    {% csrf_token %}
+	    {% render_form serializer %}
+	    <input type="submit" value="添加">
+	</form>
+</div>
+<script src="/static/public/js/zepto.min.js"></script>
+    <script src="/static/public/js/fx.js"></script>
+    <script src="/static/public/js/slideUpDown.js"></script>
+</body></html>

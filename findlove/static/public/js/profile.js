@@ -24,7 +24,7 @@
 								'<div class="about-openBtn">'+
 									'<i class="fa fa-plus"></i>'+
 								'</div>'+
-								'<a  style="text-decoration:initial" href="'+this.settings.href+'?id='+this.settings.id+'"><div class="o-person-content">'+this.settings.detail+
+								'<a  style="text-decoration:initial" href="'+this.settings.href+'?id='+this.settings.id+'"><div class="o-person-content">'+this.settings.intro+
 								'</div></a>';
 				//加入父页面
 				this.profile=$('<div>').addClass('o-team-person').html(template).appendTo(this.settings.parent);
@@ -56,16 +56,19 @@
 				var job = '<a class="o-buttons red"><i class="fa fa-suitcase"></i> '+this.settings.job+'</a>';
 				var constellation = '<a class="o-buttons red"><i class="fa fa-star"></i> '+this.settings.constellation+'</a>';
 				var height = '<a class="o-buttons red"><i class="fa fa-male"></i> '+this.settings.height+'</a>';
+				var weight = '<a class="o-buttons red"><i class="fa fa-balance-scale"></i> '+this.settings.weight+'</a>';
 				var hometown = '<a class="o-buttons red"><i class="fa fa-home"></i> '+this.settings.hometown+'人</a>';
 				var college = '<a class="o-buttons red"><i class="fa fa-university"></i> '+this.settings.college+'</a>';
 				var education = '<a class="o-buttons red"><i class="fa fa-mortar-board"></i> '+this.settings.education+'</a>';
 				var hobby = '<a class="o-buttons red"><i class="fa fa-smile-o"></i> '+this.settings.hobby+'</a>';
-				container.html(job+constellation+height+hometown+college+education+hobby);
+				container.html(job+constellation+height+weight+hometown+college+education+hobby);
 			}
 	}
 	
 	Profile.defaults={
+			id:0,//id，作为参数传到下一页面
 			name:'马秋田',
+			gender:1,
 			description:'寻找爱寻找爱寻找爱寻找爱寻找爱寻找爱寻找爱寻找爱寻找爱寻找爱寻找爱寻找爱寻找爱寻找爱寻找爱寻找爱',
 			avatar:'/static/public/img/logo.jpg',
 			job:'工程师',
@@ -73,13 +76,13 @@
 			location:'上海浦东',
 			constellation:'射手座',
 			height:'170cm',
+			weight:'60kg',
 			hometown:'河北石家庄',
 			college:'蓝翔技校',
 			education:'硕士',
 			hobby:'足球,篮球',
-			detail:'没有更多...<br/>没有更多...<br/>没有更多...<br/>没有更多...<br/>',
+			intro:'没有更多...<br/>没有更多...<br/>没有更多...<br/>没有更多...<br/>',
 			href:'/templates/candidate.html',//点击后指向的页面地址
-			id:1,//id，作为参数传到下一页面
 			parent:'body'//父元素，以#xxx的id形式传入
 	}
 	var profile=function(options){

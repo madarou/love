@@ -1,0 +1,9 @@
+<html><body>
+<h1>Candidates</h1>
+<ul>
+    {% for c in candidates %}
+    <li><a href="{% url 'manage' pk=c.pk%}">{{ c.name }}</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add' %}">新增</a>
+</body></html>

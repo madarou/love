@@ -42,7 +42,16 @@ INSTALLED_APPS = (
 )
 
 REST_FRAMEWORK = {
-        'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+#         'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+        'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+        'DEFAULT_PARSER_CLASSES': (
+                                   'rest_framework.parsers.JSONParser',
+                                   'rest_framework.parsers.FormParser',
+                                   'rest_framework.parsers.MultiPartParser',
+                                   ),
         'PAGINATE_BY': 10
     }
 
@@ -120,3 +129,4 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_FILE_PATH = 'findlove/static/public'

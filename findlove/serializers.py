@@ -9,11 +9,31 @@ from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 from django.forms import widgets
 from findlove.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES, Candidate
-
+from django.forms.fields import ImageField
+    
 class CandidateSerializer(serializers.ModelSerializer):
+    avatar=ImageField(max_length=None, allow_empty_file=False)
+    header=ImageField(max_length=None, allow_empty_file=False)
+    photo1=ImageField(max_length=None, allow_empty_file=False)
+    photo2=ImageField(max_length=None, allow_empty_file=False)
+    photo3=ImageField(max_length=None, allow_empty_file=False)
+    photo4=ImageField(max_length=None, allow_empty_file=False)
+    photo5=ImageField(max_length=None, allow_empty_file=False)
+    photo6=ImageField(max_length=None, allow_empty_file=False)
+    photo7=ImageField(max_length=None, allow_empty_file=False)
+    photo8=ImageField(max_length=None, allow_empty_file=False)
+    photo9=ImageField(max_length=None, allow_empty_file=False)
+    photo10=ImageField(max_length=None, allow_empty_file=False)
+    detail = serializers.CharField(
+        allow_blank=True,
+        max_length=4000,
+        style={'base_template': 'textarea.html', 'rows': 20}
+    )
     class Meta:
         model = Candidate
-        fields = ('id','name', 'description', 'avatar')
+        fields = ('id','name','gender','avatar','age','location','description','job','constellation',
+                 'height', 'weight','hometown','education','college','hobby','header','detail','photo1',
+                 'photo2','photo3','photo4','photo5','photo6','photo7','photo8','photo9','photo10','pubtime')
         
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -55,3 +75,4 @@ class SnippetSerializer(serializers.Serializer):
 
         # Create new instance
         return Snippet(**attrs)
+
