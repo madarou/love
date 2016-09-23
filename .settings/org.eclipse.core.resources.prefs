@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
 encoding//findlove/models.py=utf-8
 encoding//findlove/serializers.py=utf-8
+encoding//findlove/system/ImageStorage.py=utf-8
 encoding//findlove/views.py=utf-8

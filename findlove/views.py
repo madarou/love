@@ -7,7 +7,7 @@ Created on 2016年9月13日
 '''
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from findlove.serializers import UserSerializer, GroupSerializer, CandidateSerializer
+from findlove.serializers import UserSerializer, GroupSerializer, CandidateSerializer, LoginSerializer
 
 from findlove.models import Snippet,Candidate
 from findlove.serializers import SnippetSerializer
@@ -22,6 +22,7 @@ import datetime
 from django.shortcuts import get_object_or_404
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.parsers import FormParser, MultiPartParser
+from rest_framework.permissions import IsAuthenticated
 
 class CandidateList(APIView):
     """
@@ -66,9 +67,9 @@ class CandidateDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        snippet = self.get_object(pk)
-        snippet.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        candidate = self.get_object(pk)
+        candidate.delete()
+        return Response({'status':200})
 
 class GenderList(APIView):
     """
@@ -83,12 +84,14 @@ class GenderList(APIView):
             gender = 1
         candidates = Candidate.objects.filter(gender=gender).order_by('-pubtime')
         serializer = CandidateSerializer(candidates, many=True)
+        print serializer.data
         return Response(serializer.data)
 
 class CandidateManage(APIView):
     '''
     后台修改candidate
     '''
+    permission_classes = (IsAuthenticated,)
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'candidate_manage.html'
 
@@ -119,6 +122,7 @@ class CandidateManage(APIView):
             if value == '' or value is None:
                 dict.update({key:getattr(old,key)})#
 class CandidatesManage(APIView):
+    permission_classes = (IsAuthenticated,)
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'candidate_list.html'
 
@@ -128,10 +132,10 @@ class CandidatesManage(APIView):
         return Response({'candidates': candidates})
     
 class CandidatesAdd(APIView):
-    '''增加candidate'''
     '''
     后台添加candidate
     '''
+    permission_classes = (IsAuthenticated,)
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'candidate_add.html'
 
@@ -220,4 +224,37 @@ def index(request,gender=1):
     #visitor.save()
     return render_to_response('candidates.html',{'gender':gender})
 
+class LoginViewSet(APIView):
+    queryset = User.objects.all()
+    serializer_class = LoginSerializer
+    template_name = 'candidate_list.html'
+#     def get(self,request):
+#         try:
+#             username = request.data.get('username')
+#             password = request.data.get('password')
+#             user = User.objects.get(username__iexact=username)
+#             if user.check_password(password):
+#                 print user
+#                 serializer = LoginSerializer({'id': user.id, 'username': user.username})
+#                 return Response(serializer.data)
+#             return Response(status=status.HTTP_401_UNAUTHORIZED)
+#         except User.DoesNotExist:
+#             return Response(status=status.HTTP_401_UNAUTHORIZED)
+#         return HttpResponseRedirect("/account/loggedin/")
+#         return Response(serializer.data)
+    def get(self,request):
+        return redirect("/candidates/manage/")
 
+    def post(self, request):
+        try:
+            username = request.data.get('username')
+            password = request.data.get('password')
+            user = User.objects.get(username__iexact=username)
+            if user.check_password(password):
+                print user
+                serializer = LoginSerializer({'id': user.id, 'username': user.username})
+                return Response(serializer.data)
+                #return redirect("/candidates/manage/")
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)

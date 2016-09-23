@@ -10,7 +10,16 @@ from rest_framework import serializers
 from django.forms import widgets
 from findlove.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES, Candidate
 from django.forms.fields import ImageField
-    
+
+class LoginSerializer(serializers.ModelSerializer):
+
+    username = serializers.CharField(required=False, max_length=1024)
+    password = serializers.CharField(required=False, max_length=1024)
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'password')
+        
 class CandidateSerializer(serializers.ModelSerializer):
     avatar=ImageField(max_length=None, allow_empty_file=False)
     header=ImageField(max_length=None, allow_empty_file=False)

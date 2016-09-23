@@ -9,12 +9,11 @@ https://docs.djangoproject.com/en/1.8/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
-
+# encoding: utf-8
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -39,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'findlove',
     'rest_framework',
+    'rest_framework.authtoken',
 )
 
 REST_FRAMEWORK = {
@@ -85,7 +85,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'love.wsgi.application'
-
+#redirect to the url after login success
+LOGIN_REDIRECT_URL = ('/candidates/manage/')
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -130,3 +131,4 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATIC_FILE_PATH = 'findlove/static/public'
+# DEFAULT_FILE_STORAGE = 'findlove.system.ImageStorage'

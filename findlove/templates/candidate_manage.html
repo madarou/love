@@ -7,13 +7,13 @@
 	#candidate{width:80%;}
 </style>
 </head>
-<body>
+<body style="padding-left: 20%;">
 
-<h1>candidate - {{ candidate.name }}</h1>
+<h1>对象 - {{ candidate.name }}</h1>
 <div id="candidate">
 	<form action="{% url 'manage' pk=candidate.pk %}" method="POST" enctype="multipart/form-data">
 	    {% csrf_token %}
-	    {% render_form serializer %}
+	    {% render_form serializer template_pack='rest_framework/vertical'%}
 	    <input type="submit" value="添加">
 	</form>
 </div>

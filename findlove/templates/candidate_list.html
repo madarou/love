@@ -1,9 +1,66 @@
-<html><body>
+{% extends "base.html" %}
+
+{% block makao %}
+<html><head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
 <h1>Candidates</h1>
+
+
 <ul>
     {% for c in candidates %}
-    <li><a href="{% url 'manage' pk=c.pk%}">{{ c.name }}</a></li>
+    <li id="li{{c.id}}"><a href="{% url 'manage' pk=c.pk%}">{{ c.name }}</a><button class="del" id="{{c.id}}" >删除</button></li>
     {% endfor %}
 </ul>
 <a href="{% url 'add' %}">新增</a>
-</body></html>
+
+<script src="/static/public/js/zepto.min.js"></script>
+<script>
+	$(function(){
+		var csrftoken = getCookie('csrftoken');
+		$('.del').click(function(){
+			var mes=confirm("确定要删除吗？");
+			if(mes!=true){ return false; }
+			var id = $(this).attr('id');
+			$.ajax({
+				  type: 'DELETE',
+				  url: '/candidates/'+id,
+				  headers:{"X-CSRFToken":csrftoken},
+				  // type of data we are expecting in return:
+				  dataType: 'json',
+				  timeout: 300,
+				  context: $('body'),
+				  success: function(data){
+				    if(data.status=='200'){
+				    	alert("删除成功!");
+				    	$('#li'+id).remove();
+				    }
+				    else{
+				    	alert("删除失败!");
+				    }
+				  },
+				  error: function(xhr, type){
+				    alert('删除失败!')
+				  }
+				});
+		});
+	});
+	function getCookie(name) {
+	    var cookieValue = null;
+	    if (document.cookie && document.cookie !== '') {
+	        var cookies = document.cookie.split(';');
+	        for (var i = 0; i < cookies.length; i++) {
+	            var cookie = $.trim(cookies[i]);
+	            // Does this cookie string begin with the name we want?
+	            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+	                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+	                break;
+	            }
+	        }
+	    }
+	    return cookieValue;
+	}
+</script>
+
+</body></html>{% endblock %}

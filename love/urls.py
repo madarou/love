@@ -26,7 +26,8 @@ router.register(r'groups', views.GroupViewSet)
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     #url(r'^', include(router.urls)),
-    #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    #url(r'^login/$', views.LoginViewSet.as_view()),
+    url(r'^auth/', include('rest_framework.urls', namespace='rest_framework')),
 #     url(r'^snippets/$', views.SnippetList.as_view()),
 #     url(r'^snippets/(?P<pk>[0-9]+)/$', views.SnippetDetail.as_view()),
     url(r'^candidates/$', views.CandidateList.as_view()),
@@ -42,7 +43,7 @@ urlpatterns = [
     url(r'^index/$', views.index,name='index'),
     url(r'^index/(?P<gender>[0-9]*)/$', views.index,name='index'),
     url(r'^templates/(?P<path>.*)$','django.views.static.serve',
-        {'document_root':'love/findlove/templates', 'show_indexes': True}),
+        {'document_root':'findlove/templates', 'show_indexes': True}),
     
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

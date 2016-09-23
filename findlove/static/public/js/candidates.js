@@ -35,11 +35,13 @@ $(function(){
 		gender = 1;
 	}
 	$.getJSON(domain+'/candidates/gender/'+gender,function(data){
-		console.log(data);
 		$.each(data,function(index,item){
-			for(attr in item)
-				if(!item[attr])
+			for(attr in item){
+				if(item[attr]==0)
+					continue;
+				if(item[attr]==null || item[attr]==undefined || item[attr]=="")
 					delete item[attr];
+			}
 			item.parent='.o-team';
 			$.profile(item);
 		})

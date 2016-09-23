@@ -7,9 +7,9 @@
 	#candidate{width:80%;}
 </style>
 </head>
-<body>
+<body style="padding-left: 20%;">
 
-<h1>增加candidate</h1>
+<h1>增加对象</h1>
 <div id="candidate">
 	<form action="{% url 'add' %}" method="POST" enctype="multipart/form-data">
 	    {% csrf_token %}
