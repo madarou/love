@@ -72,6 +72,8 @@
 					innerContent+= '<a class="o-buttons red"><i class="fa fa-mortar-board"></i> '+this.settings.education+'</a>';
 				if(this.settings.hobby!='')
 					innerContent+= '<a class="o-buttons red"><i class="fa fa-soccer-ball-o"></i> '+this.settings.hobby+'</a>';
+				if(this.settings.income!='')
+					innerContent+= '<a class="o-buttons red"><i class="fa fa-money"></i> '+this.settings.income+'</a>';
 				if(innerContent!="")
 					container.html(innerContent);
 				else
@@ -95,6 +97,7 @@
 			college:'',
 			education:'',
 			hobby:'',
+			income:'',
 			intro:'没有更多...<br/>没有更多...<br/>没有更多...<br/>没有更多...<br/>',
 			href:'/templates/candidate.html',//点击后指向的页面地址
 			parent:'body'//父元素，以#xxx的id形式传入

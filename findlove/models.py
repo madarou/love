@@ -55,6 +55,7 @@ class Candidate(BaseModel):
     education=models.CharField(max_length=30,null=True)
     college=models.CharField(max_length=50,null=True)
     hobby=models.CharField(max_length=50,null=True)
+    income=models.CharField(max_length=10,null=True)#收入
     header=models.ImageField(upload_to=settings.STATIC_FILE_PATH+'/img/header/',storage=ImageStorage(),null=True)#个人展示的大头像
     detail=models.TextField(null=True)
     photo1=models.ImageField(upload_to=settings.STATIC_FILE_PATH+'/img/photos/',storage=ImageStorage(),null=True)
@@ -68,6 +69,7 @@ class Candidate(BaseModel):
     photo9=models.ImageField(upload_to=settings.STATIC_FILE_PATH+'/img/photos/',storage=ImageStorage(),null=True)
     photo10=models.ImageField(upload_to=settings.STATIC_FILE_PATH+'/img/photos/',storage=ImageStorage(),null=True)
     pubtime=models.DateTimeField(null=True)#发布时间
+    contact=models.CharField(max_length=80,null=True)#各种联系方式
     
     
 class Snippet(models.Model):

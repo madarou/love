@@ -41,7 +41,7 @@ class CandidateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Candidate
         fields = ('id','name','gender','avatar','age','location','description','job','constellation',
-                 'height', 'weight','hometown','education','college','hobby','header','detail','photo1',
+                 'height', 'weight','hometown','education','college','hobby','income','header','detail','photo1',
                  'photo2','photo3','photo4','photo5','photo6','photo7','photo8','photo9','photo10','pubtime')
         
 class UserSerializer(serializers.HyperlinkedModelSerializer):
